@@ -24,6 +24,8 @@ fetch('upd.txt')
         node.setAttribute('href', 'https://archive.org/download/windows-update-archive/' + row.split(","))
         node.innerHTML = row.split(",")
         document.getElementById("menu").appendChild(node);
+        var nl = document.createElement("br");
+        document.getElementById("menu").appendChild(nl);
     }
     console.log("Done")
 });
