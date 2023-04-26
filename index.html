@@ -1,1 +1,32 @@
-Coming soon!
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Update Catalog</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+</head>
+<body id="menu">
+</body>
+<script>
+fetch('upd.txt')
+.then(response => response.text()) 
+.then(textString => {
+    //Split the csv into rows
+    const rows = textString.split('\n');
+    for (row of rows) {
+    //Split the row into each of the comma separated values
+        var node = document.createElement("a");
+        node.setAttribute('src', 'https://archive.org/download/windows-update-archive/' + row.split(","))
+        node.innerHTML = row.split(",")
+        document.getElementById("menu").appendChild(node);
+    }
+    console.log("Done")
+});
+
+</script>
+</html>
