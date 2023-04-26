@@ -40,8 +40,8 @@ jobs:
         run: curl -LOs https://archive.org/download/ia-pex/ia
       - name: Set IA executable
         run: chmod +x ia
-      - name: Delete thumb_list.txt
-        run: rm thumb_list.txt
+      - name: Delete upd.txt
+        run: rm upd.txt
       - name: Commit to the repo
         run: |
           git config --global user.name "fullpwnmediabot"
