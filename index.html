@@ -21,7 +21,7 @@ fetch('upd.txt')
     for (row of rows) {
     //Split the row into each of the comma separated values
         var node = document.createElement("a");
-        node.setAttribute('src', 'https://archive.org/download/windows-update-archive/' + row.split(","))
+        node.setAttribute('href', 'https://archive.org/download/windows-update-archive/' + row.split(","))
         node.innerHTML = row.split(",")
         document.getElementById("menu").appendChild(node);
     }
