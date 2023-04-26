@@ -8,7 +8,12 @@
   <h1>Windows Update Archive</h1>
 </body>
 <script>
-const xhr = window.ActiveXObject ? new ActiveXObject("Microsoft.XMLHTTP") : new XMLHttpRequest();
+let xhr;
+try {
+  xhr = new ActiveXObject("Microsoft.XMLHTTP");
+} catch(e) {
+  xhr = new XMLHttpRequest();
+}
 xhr.open('GET', 'upd.txt');
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4 && xhr.status === 200) {
