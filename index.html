@@ -8,39 +8,28 @@
   <title>Windows Update Catalog</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
-<body id="menu" onload="loadPage()">
+<body id="menu">
   <h1>Windows Update Archive</h1>
 
   <script>
-  function loadPage() {
-    fetch('upd.txt')
-    .then(function(response) {
-      return response.text();
-    })
-    .then(function(textString) {
-        //Split the csv into rows
-        var rows = textString.split('\n');
-        for (var i = 0; i < rows.length; i++) {
+  fetch('upd.txt')
+  .then(response => response.text()) 
+  .then(textString => {
+      //Split the csv into rows
+      const rows = textString.split('\n');
+      for (row of rows) {
           //Split the row into each of the comma separated values
-          var row = rows[i].split(',');
+          var rowValues = row.split(",");
           var node = document.createElement("a");
-          node.setAttribute('href', 'https://archive.org/download/windows-update-archive/' + row);
-          node.innerText = row;
+          node.setAttribute('href', 'https://archive.org/download/windows-update-archive/' + rowValues[0]);
+          node.innerHTML = rowValues[0];
           document.getElementById("menu").appendChild(node);
           var nl = document.createElement("br");
           document.getElementById("menu").appendChild(nl);
-        }
-        console.log("Done");
-    });
-
-    // Prevent default behavior on links
-    var links = document.getElementsByTagName("a");
-    for (var i = 0; i < links.length; i++) {
-      links[i].onclick = function() {
-        window.event.returnValue = false;
-      };
-    }
-  }
+      }
+      console.log("Done")
+  });
   </script>
+
 </body>
 </html>
